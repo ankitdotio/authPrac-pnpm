@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:18.4
+    ports:
+      - 5432:5432
+    
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_DB : mydb
+      POSTGRES_PASSWORD : admin
+
+    
