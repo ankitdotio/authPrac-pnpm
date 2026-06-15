@@ -1,13 +1,14 @@
 
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
-import { pgTable,uuid,varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable,uuid,varchar } from "drizzle-orm/pg-core";
 
 
 export const userTable =  pgTable("users",{
     name : varchar({length:255}).notNull(),
     email : varchar({length:255}).notNull().unique(),
     password: varchar({length : 255}).notNull(),
-    id : uuid().defaultRandom().primaryKey()
+    id : uuid().defaultRandom().primaryKey(),
+    verified : boolean().default(false)
 })
 
 export type insertUser = InferInsertModel<typeof userTable>
